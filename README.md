@@ -1,6 +1,6 @@
 # Grepster CLI 🚀🚀🚀
 
-Inspired by the GNU grep. Important to note that this project is independently developed.
+Inspired by grep. Important to note that this project is independently developed.
 
 ### v0.1.0 🎉
 - Active development in dev branch
