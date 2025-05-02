@@ -1,1 +1,1 @@
-add_executable(MyEXE main.cpp)
+add_executable(grepster main.cpp)
