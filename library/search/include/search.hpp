@@ -2,8 +2,7 @@
 #define SEARCH_H
 
 #include <cstdint>
-#include <vector>
-
+#include <utility>
 
 namespace search {
     enum class ROUTE {
@@ -13,7 +12,8 @@ namespace search {
     };
     constexpr std::uint8_t VALID_RANGE[2]{1, 2};
     ROUTE router(std::int16_t key);
-    // std::vector<std::vector<std::string>> readFile(std::string file);
+    void searchFile();
+    void argCommands(const char* argv[], const int& argc);
 }
 
 #endif //SEARCH_H

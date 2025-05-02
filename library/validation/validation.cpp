@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-#include "validation.h"
+#include "validation.hpp"
 
 
 namespace validation {
@@ -35,10 +35,5 @@ namespace validation {
         } catch (OptionUnavailable& e) {
             return -2;
         }
-    }
-
-    void clearTerminal() {
-        std::cout << "\033[2J\033[H";
-        std::cout.flush();
     }
 }

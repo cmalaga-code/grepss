@@ -1,4 +1,4 @@
-#include "art.h"
+#include "art.hpp"
 #include <fmt/core.h>
 
 void art::displayGraphic() {

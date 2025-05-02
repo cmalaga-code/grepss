@@ -1,11 +1,11 @@
 #include <iostream>
 #include <fmt/core.h>
 #include <fmt/color.h>
-#include "init.h"
+#include "init.hpp"
 
 std::string init::display(const std::int64_t reRenderCount) {
     fmt::print("\n\n");
-    if (reRenderCount > 0) {
+    if (reRenderCount > 1) {
         fmt::print(
             fg(fmt::color::green) | fmt::emphasis::bold,
             "> Choose one of the options below. ({})\n\n",

@@ -1,5 +1,5 @@
-add_subdirectory(read)
 add_subdirectory(search)
 add_subdirectory(validation)
 add_subdirectory(art)
 add_subdirectory(init)
+add_subdirectory(clear)

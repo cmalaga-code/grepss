@@ -5,7 +5,7 @@
 #include <cstdint>
 
 namespace init {
-    constexpr std::string VERSION = "v0.1.0";
+    constexpr std::string VERSION = "v0.2.4";
     std::string display(std::int64_t reRenderCount);
 }
 

@@ -5,7 +5,6 @@
 
 namespace validation {
     std::int16_t choiceKey(const std::string& input, std::uint16_t choiceStartRange, std::uint16_t choiceEndRange);
-    void clearTerminal();
 }
 
 #endif //VALIDATION_H

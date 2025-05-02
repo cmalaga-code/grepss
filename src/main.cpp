@@ -4,46 +4,46 @@
 #include <cstdint>
 #include <fmt/color.h>
 
-#include "read.h"
-#include "validation.h"
-#include "art.h"
-#include "search.h"
-#include "init.h"
+#include "validation.hpp"
+#include "art.hpp"
+#include "search.hpp"
+#include "init.hpp"
+#include "clear.hpp"
 
 
 int main(const int argc, const char* argv[]) {
     if (argc < 2) {
-        bool exit{false};
+        bool exit {false};
         art::displayGraphic();
         std::int64_t renderCount {};
         do {
             renderCount++;
-            std::string buffer = init::display(renderCount);
+            std::string userChoice = init::display(renderCount);
             const std::int16_t choice = validation::choiceKey(
-                buffer, search::VALID_RANGE[0],
+                userChoice, search::VALID_RANGE[0],
                 search::VALID_RANGE[1]
             );
-            validation::clearTerminal();
+            clearTerminal();
             search::ROUTE r = search::router(choice);
 
             switch (r) {
-                case search::ROUTE::EXIT_PROGRAM:
-                    exit = true;
-                    break;
-                case search::ROUTE::CONTINUE:
-                    break;
-                case search::ROUTE::SEARCH_TEXT_FILE:
-
-                    break;
-                default:
-                    exit = false;
-                    break;
+            case search::ROUTE::EXIT_PROGRAM:
+                exit = true;
+                break;
+            case search::ROUTE::CONTINUE:
+                break;
+            case search::ROUTE::SEARCH_TEXT_FILE:
+                search::searchFile();
+                break;
+            default:
+                exit = false;
+                break;
             }
         }
         while (!exit);
     }
     else {
-        // argv logic
+        search::argCommands(argv, argc);
     }
     return 0;
 }
