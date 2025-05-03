@@ -135,11 +135,37 @@ namespace search {
                 fg(fmt::color::green) | fmt::emphasis::bold,
                 "========================\n"
             );
-        } else {
+        }
+        else {
             fmt::print(
-               fg(fmt::color::green) | fmt::emphasis::bold,
-               "\n> No matches! \n\n"
-           );
+                fg(fmt::color::green) | fmt::emphasis::bold,
+                "\n> No matches! \n\n"
+            );
+        }
+    }
+
+    void executeSearch(const std::string& filePath, const std::string& matchCriteria, const std::string& output) {
+        const auto tokenData = readFile(filePath);
+        auto matchResult = match(tokenData, matchCriteria);
+        std::ofstream ofFile(output);
+        if (ofFile.is_open()) {
+            ofFile << "========================\n";
+            for (const auto& [key, value] : matchResult) {
+                for (const auto& strMatch : value) {
+                    ofFile <<
+                        fmt::format("Match on row {} word number {} : {} \n",
+                                    key.first,
+                                    key.second,
+                                    strMatch
+                        );
+                }
+            }
+            ofFile << "========================\n";
+            ofFile.close();
+            fmt::print("\n\t > Successfully created file ✅\n\n");
+        }
+        else {
+            fmt::print("\n\t > Failed to create file ❌\n\n");
         }
     }
 
@@ -163,19 +189,53 @@ namespace search {
         executeSearch(filePath, matchCriteria);
     }
 
+    void searchFile(const std::string& filePath, const std::string& matchCriteria, const std::string& output) {
+        executeSearch(filePath, matchCriteria, output);
+    }
+
+    void help() {
+        fmt::print("\n============================================\n\n");
+        fmt::print(
+            fg(fmt::color::green) | fmt::emphasis::bold,
+            "1) --search-ts C:\\Users\\username\\Downloads\\filetosearch.txt \"test\" -o C:\\Users\\username\\output.txt\n\n"
+        );
+        fmt::print(
+            fg(fmt::color::green) | fmt::emphasis::bold,
+            "\t > Search text file for search text"
+            "\n\t\t > --search-ts stands for search text file"
+            "\n\t\t > --search-ts takes 2 arguments the path to file and the search text"
+            "\n\t\t > -o is optional"
+            "\n\t\t > -o stands for output and outputs a text file with the match information"
+            "\n\t\t > -o takes in one argument the output path\n\n"
+        );
+        fmt::print("Hit enter key to exit:\n");
+        fmt::print("\n============================================\n");
+        std::cin.get();
+    }
+
     void argCommands(const char* argv[], const int& argc) {
-        if (argc == 4 && strcmp(argv[1], "--search-ts") == 0 && strlen(argv[3]) > 0) {
+        if (argc == 2 && strcmp(argv[1], "--help") == 0) {
+            help();
+        }
+        else if (argc == 4 && strcmp(argv[1], "--search-ts") == 0 && strlen(argv[2]) > 0 && strlen(argv[3]) > 0) {
             const std::string filePath = argv[2];
             const std::string matchCriteria = argv[3];
             searchFile(filePath, matchCriteria);
-            fmt::print("Hit any key to exit:");
+            fmt::print("Hit enter key to exit:");
             std::cin.get();
         }
+        else if (argc == 6 && strcmp(argv[1], "--search-ts") == 0 && strlen(argv[2]) > 0 && strlen(argv[3]) > 0 &&
+            strcmp(argv[4], "-o") == 0 &&
+            strlen(argv[5]) > 0) {
+            const std::string filePath = argv[2];
+            const std::string matchCriteria = argv[3];
+            const std::string output = argv[5];
+            searchFile(filePath, matchCriteria, output);
+        }
         else {
-            fmt::print("Please use one of the following commands:\n");
             fmt::print(
                 fg(fmt::color::green) | fmt::emphasis::bold,
-                "--search-ts\n\t > Search text file. takes two arguments the path of the file and the text you wish to match. "
+                "\n\n> Use the command --help\n\n"
             );
         }
     }
