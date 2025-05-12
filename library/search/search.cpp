@@ -197,16 +197,26 @@ namespace search {
         fmt::print("\n============================================\n\n");
         fmt::print(
             fg(fmt::color::green) | fmt::emphasis::bold,
-            "1) --search-ts C:\\Users\\username\\Downloads\\filetosearch.txt \"test\" -o C:\\Users\\username\\output.txt\n\n"
+            "1) grepster.exe --search-ts C:\\Users\\username\\Downloads\\filetosearch.txt \"test\"\n\n"
         );
         fmt::print(
             fg(fmt::color::green) | fmt::emphasis::bold,
-            "\t > Search text file for search text"
+            "\t > Search text file for search text and output on the shell"
             "\n\t\t > --search-ts stands for search text file"
-            "\n\t\t > --search-ts takes 2 arguments the path to file and the search text"
-            "\n\t\t > -o is optional"
+            "\n\t\t\t > takes 2 arguments the path to file and the search text\n\n"
+        );
+        fmt::print(
+           fg(fmt::color::green) | fmt::emphasis::bold,
+           "2) grepster.exe --search-ts C:\\Users\\username\\Downloads\\filetosearch.txt \"test\" -o C:\\Users\\username\\output.txt\n\n"
+       );
+        fmt::print(
+            fg(fmt::color::green) | fmt::emphasis::bold,
+            "\t > Search text file for search text and output to a file"
+            "\n\t\t > --search-ts stands for search text file"
+            "\n\t\t\t > takes 2 arguments the path to file and the search text"
             "\n\t\t > -o stands for output and outputs a text file with the match information"
-            "\n\t\t > -o takes in one argument the output path\n\n"
+            "\n\t\t\t > -o is optional"
+            "\n\t\t\t > -o takes in one argument the output path\n\n"
         );
         fmt::print("Hit enter key to exit:\n");
         fmt::print("\n============================================\n");

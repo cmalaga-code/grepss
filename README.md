@@ -1,15 +1,15 @@
 # Grepster CLI 🚀🚀🚀
 
 Inspired by grep. Important to note that this project is independently developed.
+This CLI program allows users to search for data in a file. The match data is displayed on the shell or in a new file.
 
-### <= 0.3.x 🎉
-- Active development
-- Provide initial functionality to the CLI
-- Scope
-  1. Feature Overview
-     - Search input text file for text and output a single text file that contains the text matched.
-     - Output on the terminal the line number(s) where all the matches occurred.
-  2. Overall Goal
-     - Provide easy to use CLI
-     - Provide structure to the project
-     - Provide features listed
+## Instructions
+
+1. Download the release executable
+2. Add the executable to your system path
+3. Open a shell and execute the following to see the list of available commands
+
+```bash
+
+grepster-win64.exe --help
+```
