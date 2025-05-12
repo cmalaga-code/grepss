@@ -11,5 +11,5 @@ This CLI program allows users to search for data in a file. The match data is di
 
 ```bash
 
-grepster-win64.exe --help
+grepster.exe --help
 ```
